@@ -1,4 +1,9 @@
 #!/bin/bash
 
 echo "num processors"
- grep -c ^processor /proc/cpuinfo
+
+cnt=`grep processor /proc/cpuinfo |wc -l`
+
+if [[ $cnt -le 2 ]]; then
+	echo "Too Few CPUs, exiting"
+fi
