@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "CO	N	idle" > results.dat
+echo "CO	N	idle" > results.dat #header of results.dat and clears file
 for i in {1..50}
 do
 	./loadtest $i& #running loadtest in background
