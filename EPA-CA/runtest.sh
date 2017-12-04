@@ -5,7 +5,7 @@ do
 	./loadtest $i& #running loadtest in background
 	sleep 10 #sleeping for ten seconds = run time
 	#print out to results.dat containing C0 N idle time
-	echo "`mpstat -o JSON | jq '.sysstat.hosts[0].statistics[0]."cpu-load"[0].usr'`	$i	`mpstat -o JSON | jq '.sysstat.hosts[0].statistics[0]."cpu-load"[0].idle'`" >> results.dat
+	echo "`grep '\[$i\]' synthetic.dat | wc -l`	$i	`mpstat -o JSON | jq '.sysstat.hosts[0].statistics[0]."cpu-load"[0].idle'`" >> results.dat
 	pkill loadtest #killing loadtest
 done
 
